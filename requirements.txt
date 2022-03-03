@@ -1,9 +1,7 @@
-### dependency
-tqdm
-dvc
+dvc[gdrive]
+gunicorn
+sklearn
 pandas
-numpy
-PyYAML
-
-### local packages -
-# -e . # << uncomment this to install from setup.py
+flake8
+flask
+dvc
