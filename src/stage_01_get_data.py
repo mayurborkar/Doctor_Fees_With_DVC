@@ -1,4 +1,4 @@
-from src.utils.common import read_yaml, load_model
+from src.utils.common import read_yaml
 import pandas as pd
 import argparse
 import logging
@@ -19,7 +19,9 @@ def get_data(config_path):
     config = read_yaml(config_path)
     data = config['data_source']['source']
     data = pd.read_excel(data)
+    #print(data.head())
     return data
+    
 
 
 if __name__ == '__main__':

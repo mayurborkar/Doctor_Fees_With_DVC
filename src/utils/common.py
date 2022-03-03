@@ -1,3 +1,4 @@
+import pandas as pd
 import logging
 import json
 import yaml
@@ -22,10 +23,8 @@ def save_json(path: str, data: dict) -> None:
     logging.info(f"json file saved at: {path}")
 
 
-def load_model(model):
-    with io.StringIO() as stream:
-        model(
-            print_fn = lambda x: stream.write(f'{x}\n')
-        )
-        summary_str = stream.getvalue()
-    return summary_str
+# def load_model(model):
+#     with io.StringIO() as stream:
+#         pd.read_excel(print_fn = lambda x: stream.write(f'{x}\n'))
+#         summary_str = stream.getvalue()
+#     return summary_str
