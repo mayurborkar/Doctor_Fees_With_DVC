@@ -6,4 +6,4 @@ data_source:
   source: data_given\Final_Train.xlsx
 
 load_data:
-  raw_data: data\raw\Final_Train.xlsx
+  raw_data: data\raw\Final_Train.csv
