@@ -1,0 +1,9 @@
+base:
+  project: Doctor-Fees-Prediction
+  target_col: Fees
+
+data_source: 
+  source: data_given\Final_Train.xlsx
+
+load_data:
+  raw_data: data\raw\Final_Train.xlsx
