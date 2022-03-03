@@ -5,3 +5,6 @@ pandas
 flake8
 flask
 dvc
+
+## src Package
+-e .
