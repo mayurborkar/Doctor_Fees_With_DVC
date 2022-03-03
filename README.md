@@ -1,9 +1,9 @@
-# DVC-Template
+# Doctor Fees Prediction Using DVC
 It is general file structure that can be used for DVC implementation.
 
 ## STEPS -
 
-### STEP 01- Create a repository by using template repository
+### STEP 01- Create a repository by using template repository or you can create the folder by using template.py
 
 ### STEP 02- Clone the new repository
 
