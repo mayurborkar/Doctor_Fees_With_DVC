@@ -17,7 +17,7 @@ def load_and_save(config_path):
     config = read_yaml(config_path)
     data = get_data(config_path)
 
-    data.drop(['Miscellaneous_Info', 'Place'], axis=1, inplace=True)
+    data.drop(['Miscellaneous_Info'], axis=1, inplace=True)
 
     raw_data_path = config['load_data']['raw_data']
 
