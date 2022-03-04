@@ -5,7 +5,7 @@ import logging
 import yaml
 import os
 
-STAGE = "Get Data" ## <<< change stage name 
+STAGE = "Get Actual Data" ## <<< change stage name 
 
 logging.basicConfig(
                     filename=os.path.join("logs", 'running_logs.log'), 
