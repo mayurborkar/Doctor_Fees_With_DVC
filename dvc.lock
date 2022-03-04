@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src\stage_02_load_data.py --config=params.yaml
+    deps:
+    - path: actual_data\Final_Train.xlsx
+      md5: 322b1fe7ece2d9850ccba3fd0977dc11
+      size: 241104
+    - path: src\stage_01_get_data.py
+      md5: f9b2a54a1920ba071f0cccb60226e3fb
+      size: 1125
+    - path: src\stage_02_load_data.py
+      md5: dfa822cc0005714ff2a55e9453f0b6bd
+      size: 1222
+    outs:
+    - path: data\raw\Final_Train.csv
+      md5: f1ed5e0b61ab183a994588bc463dbf02
+      size: 558363

@@ -1,8 +1,30 @@
 # add stages here 
-# stages:
-#   stage_name:
-#     cmd: python src/stage_01______.py
-#     deps:
-#     - src/stage_01______.py
-#     outs:
-#     - output_data_of_file_path
+stages:
+  load_data:
+    cmd: python src\stage_02_load_data.py --config=params.yaml
+    deps:
+    - src\stage_01_get_data.py
+    - src\stage_02_load_data.py
+    - actual_data\Final_Train.xlsx
+    outs:
+    - data\raw\Final_Train.csv
+
+  # preprocess_data:
+  #   cmd: python src\stage_03_preprocess_data.py --config=params.yaml
+  #   deps:
+  #   - src\stage_03_preprocess_data.py
+  #   - data\raw\Final_Train.csv
+  #   outs:
+  #   - data\processed\Final.csv
+
+  # split_data:
+  #   cmd: python src\stage_04_split_data.py --config=params.yaml
+  #   deps:
+  #   - src\stage_04_split_data.py
+  #   - data\processed\Final.csv
+  #   outs:
+  #   - data\processed\train_Final.csv
+  #   - data\processed\test_Final.csv
+
+    
+    

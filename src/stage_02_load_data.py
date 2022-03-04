@@ -4,7 +4,7 @@ import argparse
 import logging
 import os
 
-STAGE = "Load Data" ## <<< change stage name 
+STAGE = "Load The Actual Data" ## <<< change stage name 
 
 logging.basicConfig(
                     filename=os.path.join("logs", 'running_logs.log'), 
@@ -19,9 +19,9 @@ def load_and_save(config_path):
 
     data.drop(['Miscellaneous_Info'], axis=1, inplace=True)
 
-    raw_data_path = config['load_data']['raw_data']
+    raw_data = config['load_data']['raw_data']
 
-    data.to_csv(raw_data_path, sep=',', index=False)
+    data.to_csv(raw_data, sep=',', index=False)
 
 
 if __name__ == '__main__':
