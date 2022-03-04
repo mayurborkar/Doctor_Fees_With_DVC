@@ -3,8 +3,14 @@ base:
   target_col: Fees
 
 data_source: 
-  source: data_given\Final_Train.xlsx
-
+  source: actual_data\Final_Train.xlsx
+  
 load_data:
   raw_data: data\raw\Final_Train.csv
-  processed_data: data\processed\Final.csv
+  processed_data: data\raw\Final.csv
+
+split_data: 
+  train_data: data\processed\train_Final.csv
+  test_data: data\processed\test_Final.csv
+  split_ratio: 0.2
+  random_state: 42
