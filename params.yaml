@@ -7,3 +7,4 @@ data_source:
 
 load_data:
   raw_data: data\raw\Final_Train.csv
+  processed_data: data\processed\Final.csv
