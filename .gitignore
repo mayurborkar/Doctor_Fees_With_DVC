@@ -140,3 +140,4 @@ configs/secrets.yaml
 # add your env folder here if its there
 logs/running_logs.log
 data/raw/Final_Train.csv
+data/processed/Final.csv
