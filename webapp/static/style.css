@@ -1,0 +1,33 @@
+body {
+    background-color: brown;
+    
+}
+
+.card {
+    border: 2px solid black;
+}
+
+a {
+    color: #f1f9f9;
+}
+
+a:hover {
+    color: #f0f0f0;
+  }
+
+  footer {
+    background: #061D25;
+    padding: 10px 0;
+    text-align: center;
+  }
+  footer a {
+    color: #70726F;
+    font-size: 20px;
+    padding: 10px;
+    transition: all .5s ease;
+  }
+
+  
+  footer a:hover {
+    color: white;
+  }
