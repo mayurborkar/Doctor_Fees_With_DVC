@@ -4,10 +4,10 @@ base:
 
 data_source: 
   source: actual_data\Final_Train.xlsx
-  
+
 load_data:
   raw_data: data\raw\Final_Train.csv
-  processed_data: data\raw\Final.csv
+  processed_data: data\raw\processed_data.csv
 
 split_data: 
   train_data: data\processed\train_Final.csv
