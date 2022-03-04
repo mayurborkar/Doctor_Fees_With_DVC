@@ -26,5 +26,24 @@ stages:
     - data\processed\train_Final.csv
     - data\processed\test_Final.csv
 
+  train_and_evaluate:
+    cmd: python src\stage_05_train_evaluate.py --config=params.yaml
+    deps:
+      - src\stage_05_train_evaluate.py
+      - data\processed\train_Final.csv
+      - data\processed\test_Final.csv
+    params:
+      - estimators.RandomForestRegressor.params.max_depth
+      - estimators.RandomForestRegressor.params.min_samples_split
+      - estimators.RandomForestRegressor.params.min_samples_leaf
+      - estimators.RandomForestRegressor.params.n_estimators
+    metrics:
+      - reports\scores.json:
+          cache: false
+      - reports\params.json:
+          cache: false
+    outs:
+      - saved_model\model.joblib
+
     
     

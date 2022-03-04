@@ -14,3 +14,17 @@ split_data:
   test_data: data\processed\test_Final.csv
   split_ratio: 0.2
   random_state: 42
+
+estimators:
+  RandomForestRegressor:
+    params:
+      max_depth: 12
+      n_estimators: 660
+      min_samples_split: 10
+      min_samples_leaf: 5
+
+model_dir: saved_model
+
+reports:
+  params: reports\params.json
+  scores: reports\scores.json
