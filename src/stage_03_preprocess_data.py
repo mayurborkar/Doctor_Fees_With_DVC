@@ -21,39 +21,61 @@ def main(config_path):
     ## read config files
     config = read_yaml(config_path)
 
+    logging.info(f'Loading The Raw Data')
+
     raw_data_path = config['load_data']['raw_data']
     data = pd.read_csv(raw_data_path)
 
 
     ############# Handle The Experience Column #############
+    logging.info(f'Handeling The Experience Column')
+
     data['Experience'] = data['Experience'].str.split().str[0]
     data['Experience'] = data['Experience'].astype(int)
+
+    logging.info(f'The Experience Column Convert Into Int & Split The Number')
     # print(data['Experience'].head())
 
 
     ############# Handle The Rating Column #############
+    logging.info(f'Handeling The Rating Column')
+
     data['Rating'].fillna(-1, inplace=True)
     data['Rating']=data['Rating'].apply(lambda x: str(x).replace('%','')).astype(int)
+
+    logging.info(f'Fill Up Nan Value And Convert It Into Int Column')
     
     bins = [-1,0,10,20,30,40,50,60,70,80,90,100]
     labels = [i for i in range (11)]
     data['Rating'] = pd.cut(data['Rating'], bins=bins, labels=labels, include_lowest=True)
+
+    logging.info(f'Labeling The Rating Column In Proper Format')
     # print(data['Rating'].head())
 
 
     ############# Handle The Place Column #############
+    logging.info(f'Handeling The Place Column')
+
     data['Place'].fillna('Unknown,Unknown',inplace=True)
+
+    logging.info(f'Create The Locality & City Column From The Place')
 
     data['Locality'] = data['Place'].str.split(",").str[0]
     data['City']    = data['Place'].str.split(",").str[1]
     data.drop(['Place', 'Locality'],axis=1,inplace=True)
 
+    logging.info(f'Handeling The Space Between The Name In City Column')
+
     data['City'] = data['City'].apply (lambda x: re.sub(' +','',str(x)))
 
 
     ############# Handle The Qualification Column #############
+    logging.info(f'Handeling The Qualification Column')
+
     data['Qualification'] = data['Qualification'].str.split(",")
     Qualification = {}
+
+    logging.info(f'Finding All The Qualification Available In Data')
 
     for x in data['Qualification'].values:
         for qual in x:
@@ -62,13 +84,15 @@ def main(config_path):
                 Qualification[qual] += 1
             else:
                 Qualification[qual] = 1
-    #print(Qualification)
+
+    logging.info(f'Printing The all The Qualification: \n{Qualification}')
 
     most_qual = sorted(Qualification.items(), key=lambda x: x[1], reverse=True)[:10]
     final_qual = []
     for qual in most_qual:
         final_qual.append(qual[0])
-    #print(final_qual)
+
+    logging.info(f'Printing The Top 10 Qualification: \n{print(final_qual)}')
 
     for qual in final_qual:
         data[qual] = 0
@@ -77,11 +101,15 @@ def main(config_path):
             c = c.strip()
             if c in final_qual:
                 data[c][y] = 1
-    #print(data.head())
+    
+    logging.info(f'Convert The Dummy Column On The Basis of Qualification:\n{data.columns}')
+
     data.drop(['Qualification'], axis=1, inplace=True)
 
 
     ############# Rename The Qualification Dummy Column #############
+    logging.info(f'Rename The Dummy Column That Are Created')
+
     data.rename(columns={
         'MD - Dermatology':'MD_Dermatology','MS - ENT':'MS_ENT','Venereology & Leprosy':'Venereology_Leprosy',
         'MD - General Medicine':'MD_General_Medicine','MD - Homeopathy':'MD_Homeopathy',
@@ -91,12 +119,18 @@ def main(config_path):
 
 
     ############# Create The Dummy of Some Column #############
+    logging.info(f'Create The Dummy Column On The Basis of City & Profile Column')
+
     data = pd.get_dummies(data, columns=['City','Profile'], prefix=['City','Profile'])
+
+    logging.info(f'Total No of Columns:\n{data.columns}')
 
 
     ############# Saving The Processed Data #############
     processed_data = config['load_data']['processed_data']
     data.to_csv(processed_data, sep=',', index=False)
+
+    logging.info(f'Saving The The Data In The Csv Format In Data\Processed Folder')
 
 
 if __name__ == '__main__':
