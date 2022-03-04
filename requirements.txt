@@ -3,9 +3,11 @@ gunicorn
 openpyxl
 sklearn
 pandas
+pytest
 flake8
 flask
 dvc
+tox
 
 ## src Package
 -e .
