@@ -17,14 +17,14 @@ stages:
     outs:
     - data\raw\processed_data.csv
 
-  # split_data:
-  #   cmd: python src\stage_04_split_data.py --config=params.yaml
-  #   deps:
-  #   - src\stage_04_split_data.py
-  #   - data\processed\Final.csv
-  #   outs:
-  #   - data\processed\train_Final.csv
-  #   - data\processed\test_Final.csv
+  split_data:
+    cmd: python src\stage_04_split_data.py --config=params.yaml
+    deps:
+    - src\stage_04_split_data.py
+    - data\raw\processed_data.csv
+    outs:
+    - data\processed\train_Final.csv
+    - data\processed\test_Final.csv
 
     
     
