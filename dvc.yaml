@@ -9,13 +9,13 @@ stages:
     outs:
     - data\raw\Final_Train.csv
 
-  # preprocess_data:
-  #   cmd: python src\stage_03_preprocess_data.py --config=params.yaml
-  #   deps:
-  #   - src\stage_03_preprocess_data.py
-  #   - data\raw\Final_Train.csv
-  #   outs:
-  #   - data\processed\Final.csv
+  preprocess_data:
+    cmd: python src\stage_03_preprocess_data.py --config=params.yaml
+    deps:
+    - src\stage_03_preprocess_data.py
+    - data\raw\Final_Train.csv
+    outs:
+    - data\raw\processed_data.csv
 
   # split_data:
   #   cmd: python src\stage_04_split_data.py --config=params.yaml

@@ -4,8 +4,6 @@ import pandas as pd
 import numpy as np
 import argparse
 import logging
-import random
-import shutil
 import os
 import re
 
