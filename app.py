@@ -255,6 +255,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Chennai"):
             City_Bangalore = 0
@@ -266,6 +267,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Coimbatore"):
             City_Bangalore = 0
@@ -277,6 +279,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Delhi"):
             City_Bangalore = 0
@@ -288,6 +291,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Ernakulam"):
             City_Bangalore = 0
@@ -299,6 +303,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Hyderabad"):
             City_Bangalore = 0
@@ -310,6 +315,7 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Mumbai"):
             City_Bangalore = 0
@@ -321,6 +327,7 @@ def predict():
             City_Mumbai = 1            
             City_Thiruvananthapuram = 0
             City_Unknown = 0
+            City_nan = 0
             
         elif(City == "Thiruvananthapuram"):
             City_Bangalore = 0
@@ -332,8 +339,9 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 1
             City_Unknown = 0
+            City_nan = 0
             
-        else:
+        elif(City == 'Unknown'):
             City_Bangalore = 0
             City_Chennai = 0
             City_Coimbatore = 0
@@ -343,14 +351,28 @@ def predict():
             City_Mumbai = 0            
             City_Thiruvananthapuram = 0
             City_Unknown = 1
+            City_nan = 0
+
+        else:
+            City_Bangalore = 0
+            City_Chennai = 0
+            City_Coimbatore = 0
+            City_Delhi = 0
+            City_Ernakulam = 0
+            City_Hyderabad = 0
+            City_Mumbai = 0            
+            City_Thiruvananthapuram = 0
+            City_Unknown = 0
+            City_nan = 1
+
 
         model = load_model(params_path) 
 
         prediction =[[Experience,Rating,MBBS,BDS,BAMS,BHMS,MD_Dermatology,MS_ENT,Venereology_Leprosy,
                     MD_General_Medicine,Diploma_in_Otorhinolaryngology,MD_Homeopathy,City_Bangalore,City_Chennai,
                     City_Coimbatore,City_Delhi,City_Ernakulam,City_Hyderabad,City_Mumbai,City_Thiruvananthapuram,
-                    City_Unknown,Profile_Ayurveda,Profile_Dentist,Profile_Dermatologists,Profile_ENT_Specialist,
-                    Profile_General_Medicine,Profile_Homeopath]]
+                    City_Unknown,City_nan,Profile_Ayurveda,Profile_Dentist,Profile_Dermatologists,
+                    Profile_ENT_Specialist,Profile_General_Medicine,Profile_Homeopath]]
                     
         
         Fees = model.predict(prediction)
