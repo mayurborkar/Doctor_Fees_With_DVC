@@ -59,6 +59,7 @@ def train_and_evaluate(config_path):
     train_x = train.drop(target_col, axis=1)
     test_x = test.drop(target_col, axis=1)
 
+    # print(test_x.columns)
     logging.info(f'Create The Model')
     rfr = RandomForestRegressor(min_samples_split=min_samples_split, min_samples_leaf=min_samples_leaf, 
                                 max_features='sqrt', n_estimators= n_estimators, bootstrap=True)

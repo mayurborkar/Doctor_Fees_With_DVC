@@ -60,12 +60,23 @@ def main(config_path):
 
     data['Locality'] = data['Place'].str.split(",").str[0]
     data['City']    = data['Place'].str.split(",").str[1]
-    data.drop(['Place', 'Locality'],axis=1,inplace=True)
 
     logging.info(f'Handeling The Space Between The Name In City Column')
 
     data['City'] = data['City'].apply (lambda x: re.sub(' +','',str(x)))
 
+    logging.info(f'Replacing Sector5 City With Delhi City')
+
+    data['City'] = np.where(data['City'] == 'Sector5', 'Delhi', data['City'])
+
+    logging.info(f'The Locality Where The Value Is Nan Replacing With The Unknown')
+
+    data['Locality'][3980] = 'Unknown'
+    data['Locality'][3980] = 'Unknown'
+
+    logging.info(f'Removing The Place & Locality Column & keeping The City Column For Dummy')
+
+    data.drop(['Place', 'Locality'],axis=1,inplace=True)
 
     ############# Handle The Qualification Column #############
     logging.info(f'Handeling The Qualification Column')
