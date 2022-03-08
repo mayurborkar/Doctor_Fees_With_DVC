@@ -378,7 +378,7 @@ def predict():
         Fees = model.predict(prediction)
         # round(prediction[0],2)  
         
-        return render_template('home.html', prediction_text="Your Doctor consultancy Fees is Rs. {}".format(Fees))
+        return render_template('home.html', prediction_text="Your Doctor consultancy Fees is Rs. {}".format(round(Fees[0],2)))
      	    
     return render_template('home.html')
 
